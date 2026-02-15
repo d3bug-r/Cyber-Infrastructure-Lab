@@ -1,0 +1,23 @@
+;
+; BIND data file for zone "sayz.lan"
+;
+$TTL    604800
+@       IN      SOA     sayz.lan. root.sayz.lan. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+
+; 1. Define the Name Server (NS)
+@       IN      NS      srv-linux.sayz.lan.
+
+; 2. Define IP of the Name Server
+srv-linux  IN      A       192.168.1.20
+
+; 3. Windows Client IP (Received from DHCP)
+pc-windows IN      A       192.168.1.100
+
+; 4. CNAME Alias (www points to the server)
+www        IN      CNAME   srv-linux
