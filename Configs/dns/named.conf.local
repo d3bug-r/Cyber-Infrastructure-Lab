@@ -1,0 +1,14 @@
+// Local Zone Declarations
+// File: /etc/bind/named.conf.local
+
+// FORWARD ZONE: From Name to IP
+zone "sayz.lan" {
+    type master;                    // Master Server for this zone
+    file "/etc/bind/db.sayz.lan";   // Zone file path
+};
+
+// REVERSE ZONE: From IP to Name
+zone "1.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192";        // Reverse zone file path
+};
