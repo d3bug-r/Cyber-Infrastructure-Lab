@@ -1,0 +1,32 @@
+// BIND9 Global Options
+// File: /etc/bind/named.conf.options
+
+// ACL: Define who is allowed to query this server
+acl "allowed" {
+    192.168.1.0/24; // Only Local Network
+    127.0.0.1;      // Localhost
+};
+
+options {
+    directory "/var/cache/bind";
+
+    // SECURITY: Recursion allowed only for the "allowed" ACL
+    recursion yes;
+    allow-query { allowed; };
+
+    // FORWARDERS: If I don't know the answer, ask Google Public DNS
+    forwarders {
+        8.8.8.8;
+        8.8.4.4;
+    };
+
+    // DNSSEC disabled for this lab environment
+    dnssec-validation no;
+
+    listen-on-v6 { any; };
+
+	//========================================================================
+	// If BIND logs error messages about the root key being expired,
+	// you will need to update your keys.  See https://www.isc.org/bind-keys
+	//========================================================================
+};
