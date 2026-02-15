@@ -1,0 +1,22 @@
+;
+; BIND reverse data file for 192.168.1.x
+;
+$TTL    604800
+@       IN      SOA     sayz.lan. root.sayz.lan. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+
+; Name Server (NS) declaration
+@       IN      NS      srv-linux.sayz.lan.
+
+; PTR Records (IP -> Name)
+; 20 points to srv-linux
+20      IN      PTR     srv-linux.sayz.lan.
+
+; 100 points to pc-windows
+; WARNING FOR ME : FINAL DOT IS MANDATORY!
+100     IN      PTR     pc-windows.sayz.lan.
