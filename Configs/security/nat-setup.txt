@@ -1,0 +1,42 @@
+# SECURITY & NAT CONFIGURATION
+# Purpose: Enable Internet for Client (Masquerade) & Expose Services (Port Forwarding)
+
+# VARIABLES (Adapt to your real interfaces with 'ip a')
+# WAN_IF="enp0s8"   <-- Your Internet Interface
+# LAN_IF="enp0s3"   <-- Your Internal Network Interface
+# WIN_IP="192.168.1.100" <-- Your Windows Client IP
+
+# ==========================================
+# 1. ENABLE ROUTING (IP FORWARDING)
+# ==========================================
+# Instant activation:
+sudo sysctl -w net.ipv4.ip_forward=1
+# Verification:
+cat /proc/sys/net/ipv4/ip_forward
+# (Should return 1)
+
+
+# ==========================================
+# 2. OUTGOING TRAFFIC (INTERNET ACCESS)
+# ==========================================
+# Rule: "Everything leaving via WAN gets the Router's Public IP sticker"
+# Replace 'enp0s8' with your actual WAN interface
+sudo iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
+
+
+# ==========================================
+# 3. INCOMING TRAFFIC (PORT FORWARDING)
+# ==========================================
+# Rule: "Traffic hitting WAN on port 80 goes to Windows on port 8000"
+# Scenario: An external user wants to see the website hosted on the internal Windows.
+sudo iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.100:8000
+
+
+# ==========================================
+# 4. VERIFICATION COMMANDS (DEBUGGING)
+# ==========================================
+# List all NAT rules with line numbers and verbose output
+sudo iptables -t nat -L -v -n --line-numbers
+
+# Check if the connection is tracked (Conntrack)
+sudo conntrack -L | grep 192.168.1.100
