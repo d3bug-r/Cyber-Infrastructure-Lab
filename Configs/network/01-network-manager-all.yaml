@@ -1,0 +1,20 @@
+# Network configuration for Gateway (Ubuntu Server)
+# Documentation: https://netplan.io/
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    # LAN Interface (Adapter 1 - Internal Network) -> Gateway for Windows Client
+    # We DISABLE DHCP client here because WE are the DHCP Server for the LAN.
+    # We must enforce a Static IP so clients can find us.
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      addresses:
+        - 192.168.1.20/24
+
+    # WAN Interface (Adapter 2 - NAT) -> Connected to Internet
+    # We enable DHCP client here to get an IP from the ISP (VirtualBox NAT).
+    enp0s8:
+      dhcp4: true
+      dhcp6: false
