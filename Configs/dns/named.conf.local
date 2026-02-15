@@ -1,14 +1,15 @@
-// Local Zone Declarations
-// File: /etc/bind/named.conf.local
+// LOCAL ZONES CONFIGURATION
+// Purpose: Define the domains (Zones) that this server manages authoritatively.
 
-// FORWARD ZONE: From Name to IP
+// FORWARD ZONE: Translates Names to IPs (sayz.lan -> 192.168.1.x)
 zone "sayz.lan" {
-    type master;                    // Master Server for this zone
-    file "/etc/bind/db.sayz.lan";   // Zone file path
+    type master;                    
+    file "/etc/bind/db.sayz.lan";   
 };
 
-// REVERSE ZONE: From IP to Name
+// REVERSE ZONE: Translates IPs back to Names (192.168.1.x -> sayz.lan)
+// Note: "1.168.192.in-addr.arpa" represents the subnet 192.168.1.0 read backwards.
 zone "1.168.192.in-addr.arpa" {
     type master;
-    file "/etc/bind/db.192";        // Reverse zone file path
+    file "/etc/bind/db.192";        
 };
