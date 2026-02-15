@@ -1,2 +1,2 @@
 # Infrastructure-Lab-Sayz
-Portfolio technique : Virtualisation, Réseaux et Administration Système. Préparation Master Cybersécurité.
+Deployment of a secured Virtual Infrastructure (Linux Gateway, DHCP, DNS, Firewall) for Cybersecurity Master preparation.
