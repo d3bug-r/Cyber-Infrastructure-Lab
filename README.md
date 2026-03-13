@@ -1,6 +1,6 @@
 # 🛡️ Cyber Lab Infrastructure (Virtualization & Hardening)
 
-**Project Owner:** Sayz
+**Project Owner:** D3bug
 
 **Status:** In Progress (Month 2/7)
 
