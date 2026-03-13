@@ -2,7 +2,7 @@
 
 **Project Owner:** Sayz
 
-**Status:** In Progress (Month 1/7)
+**Status:** In Progress (Month 2/7)
 
 **Goal:** Master Cybersecurity Preparation & Network Engineering Level
 
