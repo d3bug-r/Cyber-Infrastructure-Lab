@@ -4,7 +4,7 @@
 
 **Status:** In Progress (Month 3/7)
 
-**Goal:** Master Cybersecurity Preparation & Network Engineering Level
+**Goal:** Cybersecurity Apprenticeship Preparation & Network Engineering Level
 
 ---
 
