@@ -2,7 +2,7 @@
 
 **Project Owner:** D3bug
 
-**Status:** In Progress (Month 2/7)
+**Status:** In Progress (Month 3/7)
 
 **Goal:** Master Cybersecurity Preparation & Network Engineering Level
 
